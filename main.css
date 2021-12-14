@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .logo-primary {
+    @apply text-6xl relative z-20 w-max border-tokyo-term-magenta border-4 p-4 rounded-md text-tokyo-term-white bg-tokyo-term-black; 
+  }
+}
+

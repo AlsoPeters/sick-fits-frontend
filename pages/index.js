@@ -1,3 +1,3 @@
 export default function IndexPage() {
-  return <p>I am the index page</p>;
+  return <p className="">I am the index page testing</p>;
 }

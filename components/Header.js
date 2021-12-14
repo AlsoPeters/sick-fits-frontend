@@ -1,7 +1,18 @@
+import Link from "next/link";
+import Nav from "./Nav";
+
 export default function Header() {
   return (
-    <header>
-      <p>I am the header</p>
+    <header className="text-tokyo-term-blue bg-tokyo-night_BLK">
+      <div className="grid grid-cols-3 justify-between items-center">
+        <Link href="/">
+          <h1 className="m-4 logo-primary hover:cursor-pointer">Sick Fits</h1>
+        </Link>
+      </div>
+      <div className="sub-bar">
+        <p>Search</p>
+      </div>
+      <Nav />
     </header>
   );
 }
