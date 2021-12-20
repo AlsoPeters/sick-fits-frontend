@@ -3,6 +3,8 @@ import NProgress from "nprogress";
 import "../components/styles/nprogress.css";
 import "../main.css";
 import Router from "next/router";
+import { ApolloProvider } from "@apollo/client";
+import withData from "../lib/withData";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -10,10 +12,15 @@ Router.events.on("routeChangeError", () => NProgress.done());
 
 import Page from "../components/Page";
 
-export default function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, apollo }) {
+  console.log(apollo);
   return (
-    <Page>
-      <Component {...pageProps} />
-    </Page>
+    <ApolloProvider client={apollo}>
+      <Page>
+        <Component {...pageProps} />
+      </Page>
+    </ApolloProvider>
   );
 }
+
+export default withData(MyApp);
