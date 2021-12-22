@@ -8,11 +8,11 @@ export default function Header() {
         <Link href="/">
           <h1 className="m-4 logo-primary hover:cursor-pointer">Sick Fits</h1>
         </Link>
+        <Nav />
       </div>
       <div className="sub-bar">
         <p>Search</p>
       </div>
-      <Nav />
     </header>
   );
 }
