@@ -1,8 +1,8 @@
-import { useQuery } from "@apollo/client";
-import gql from "graphql-tag";
-import Product from "../components/Product.js";
+import { useQuery } from '@apollo/client';
+import gql from 'graphql-tag';
+import Product from '../components/Product.js';
 
-const ALL_PRODUCTS_QUERY = gql`
+export const ALL_PRODUCTS_QUERY = gql`
   query ALL_PRODUCTS_QUERY {
     allProducts {
       id
@@ -26,7 +26,7 @@ export default function Products() {
   if (error) return <p>Error: {error.message}</p>;
   return (
     <div>
-      <div className="grid grid-cols-2 gap-14">
+      <div className='grid grid-cols-2 gap-14'>
         {data.allProducts.map((product) => (
           <Product key={product.id} product={product} />
         ))}
