@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import useForm from '../lib/useForm';
+import DisplayError from './ErrorMessage';
 
 const SINGLE_PRODUCT_QUERY = gql`
   query SINGLE_PRODUCT_QUERY($id: ID!) {
@@ -20,9 +21,9 @@ const UPDATE_PRODUCT_MUTATION = gql`
     $description: String
     $price: Int
   ) {
-    UpdateProduct(
+    updateProduct(
       id: $id
-      data: { id: $id, name: $name, description: $description, price: $price }
+      data: { name: $name, description: $description, price: $price }
     ) {
       id
       name
@@ -41,12 +42,7 @@ export default function UpdateProduct({ id }) {
   const [
     updateProduct,
     { data: updateData, error: updateError, loading: updateLoading },
-  ] = useMutation(UPDATE_PRODUCT_MUTATION, {
-    variables: {
-      id,
-      // TODO: pass in updates to product here!
-    },
-  });
+  ] = useMutation(UPDATE_PRODUCT_MUTATION);
 
   const { inputs, handleChange, clearForm, resetForm } = useForm(data?.Product);
 
@@ -54,43 +50,70 @@ export default function UpdateProduct({ id }) {
   // 3. We need the form to handle the updates
   return (
     <div>
-      <form>
-        <label htmlFor='name'>
-          Name
-          <input
-            type='text'
-            id='name'
-            name='name'
-            placeholder='Name'
-            value={inputs.name}
-            onChange={handleChange}
-          />
-        </label>
-        <label htmlFor='price'>
-          price
-          <input
-            type='number'
-            id='name'
-            name='price'
-            placeholder='Price'
-            value={inputs.price}
-            onChange={handleChange}
-          />
-        </label>
-        <button
-          className='px-2 py-1 m-2 border-2 rounded-md bg-tokyo-term-black border-tokyo-term-magenta'
-          type='button'
-          onClick={clearForm}
-        >
-          Clear Form
-        </button>
-        <button
-          className='px-2 py-1 m-2 border-2 rounded-md bg-tokyo-term-black border-tokyo-term-magenta'
-          type='button'
-          onClick={resetForm}
-        >
-          Reset Form
-        </button>
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const res = await updateProduct({
+            variables: {
+              id: id,
+              name: inputs.name,
+              description: inputs.description,
+              price: inputs.price,
+            },
+          }).catch(console.error);
+          console.log(res);
+          // Submit the inputfields to the backend:
+          //const res = await createProduct();
+          //clearForm();
+          // Go to that products page
+          // Router.push({
+          //   pathname: `/product/${res.data.createProduct.id}`,
+          // });
+        }}
+      >
+        <DisplayError error={error} />
+        <fieldset disabled={loading}>
+          <label htmlFor='name'>
+            Name
+            <input
+              type='text'
+              id='name'
+              name='name'
+              placeholder='Name'
+              value={inputs.name}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor='price'>
+            price
+            <input
+              type='number'
+              id='name'
+              name='price'
+              placeholder='Price'
+              value={inputs.price}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor='description'>
+            Description
+            <textarea
+              id='description'
+              name='description'
+              placeholder='Description'
+              value={inputs.description}
+              onChange={handleChange}
+            />
+          </label>
+
+          <button
+            // TODO: add this button style as a default
+            className='px-2 py-1 m-2 border-2 rounded-md bg-tokyo-term-black border-tokyo-term-magenta'
+            type='submit'
+          >
+            Update Product
+          </button>
+        </fieldset>
       </form>
     </div>
   );
