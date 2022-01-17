@@ -3,13 +3,11 @@ import { gql, useQuery } from '@apollo/client';
 export const CURRENT_USER_QUERY = gql`
   query {
     authenticatedItem {
-      User {
-        ... on User {
-          id
-          email
-          name
-          # TODO: query the cart once we have it
-        }
+      ... on User {
+        id
+        email
+        name
+        # TODO: query the cart once we have it
       }
     }
   }
