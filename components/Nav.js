@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import SignOut from './SignOut';
 import { useUser } from './User';
 
 export default function Nav() {
@@ -28,6 +29,7 @@ export default function Nav() {
               Account
             </p>
           </Link>
+          <SignOut />
         </>
       )}
       {!user && (
