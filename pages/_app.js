@@ -1,23 +1,26 @@
-import "tailwindcss/tailwind.css";
-import NProgress from "nprogress";
-import "../components/styles/nprogress.css";
-import "../main.css";
-import Router from "next/router";
-import { ApolloProvider } from "@apollo/client";
-import withData from "../lib/withData";
+import 'tailwindcss/tailwind.css';
+import NProgress from 'nprogress';
+import '../components/styles/nprogress.css';
+import '../main.css';
+import Router from 'next/router';
+import { ApolloProvider } from '@apollo/client';
+import withData from '../lib/withData';
 
-Router.events.on("routeChangeStart", () => NProgress.start());
-Router.events.on("routeChangeComplete", () => NProgress.done());
-Router.events.on("routeChangeError", () => NProgress.done());
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
 
-import Page from "../components/Page";
+import Page from '../components/Page';
+import { CartStateProvider } from '../lib/cartState';
 
 function MyApp({ Component, pageProps, apollo }) {
   return (
     <ApolloProvider client={apollo}>
-      <Page>
-        <Component {...pageProps} />
-      </Page>
+      <CartStateProvider>
+        <Page>
+          <Component {...pageProps} />
+        </Page>
+      </CartStateProvider>
     </ApolloProvider>
   );
 }

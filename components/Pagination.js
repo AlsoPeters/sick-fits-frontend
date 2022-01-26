@@ -22,7 +22,7 @@ export default function Pagination({ page }) {
   const pageCount = Math.ceil(count / perPage);
 
   return (
-    <div>
+    <>
       <Head>
         <title>
           Sick Fits - Page {page} of {pageCount}
@@ -38,6 +38,6 @@ export default function Pagination({ page }) {
       <Link href={`/products/${page + 1}`}>
         <a aria-disabled={page >= pageCount}>Next</a>
       </Link>
-    </div>
+    </>
   );
 }

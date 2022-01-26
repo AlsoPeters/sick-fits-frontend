@@ -1,11 +1,11 @@
 import { useUser } from './User';
 import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
+import { useCart } from '../lib/cartState';
 
 function CartItem({ cartItem }) {
   const product = cartItem.product;
   if (!product) return null;
-  console.log(product);
   return (
     <li className='grid grid-cols-2 px-2 py-1 my-4 border-b border-tokyo-term-magenta'>
       <img
@@ -28,13 +28,19 @@ function CartItem({ cartItem }) {
 
 export default function Cart() {
   const me = useUser();
+  const { cartOpen, closeCart } = useCart();
   if (!me) return null;
-  console.log(me);
   return (
     <div className='mx-4 bg-tokyo-storm_BLK'>
       <header className='px-2 py-1 m-2 text-2xl font-bold border-2 rounded-sm bg-tokyo-term-black border-tokyo-term-magenta w-max'>
         {me.name}'s Cart
       </header>
+      <button
+        className='px-2 py-1 text-xl border-2 rounded-md border-tokyo-term-magenta bg-tokyo-term-black'
+        onClick={closeCart}
+      >
+        &times;
+      </button>
       <ul>
         {me.cart.map((cartItem) => (
           <CartItem key={cartItem.id} cartItem={cartItem} />

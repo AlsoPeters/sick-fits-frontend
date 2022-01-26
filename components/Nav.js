@@ -1,10 +1,11 @@
 import Link from 'next/link';
+import { useCart } from '../lib/cartState';
 import SignOut from './SignOut';
 import { useUser } from './User';
 
 export default function Nav() {
   const user = useUser();
-  console.log(user);
+  const { openCart } = useCart();
   return (
     <nav className='flex mx-4 text-3xl font-bold w-max'>
       <Link href='/products'>
@@ -30,6 +31,9 @@ export default function Nav() {
             </p>
           </Link>
           <SignOut />
+          <button type='button' onClick={openCart}>
+            My Cart
+          </button>
         </>
       )}
       {!user && (
