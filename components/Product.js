@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import formatMoney from '../lib/formatMoney';
+import AddToCart from './AddToCart';
 import DeleteProduct from './DeleteProduct';
 
 export default function Product({ product }) {
@@ -17,17 +18,20 @@ export default function Product({ product }) {
       </div>
       <div>{formatMoney(product.price)}</div>
       <p>{product.description}</p>
-      <div className='buttonList'>
-        <Link
-          href={{
-            pathname: 'update',
-            query: {
-              id: product.id,
-            },
-          }}
-        >
-          Edit
-        </Link>
+      <div className='flex justify-center mx-4 my-2'>
+        <div className='px-2 py-1 font-bold border-2 rounded-md bg-tokyo-term-black border-tokyo-term-magenta'>
+          <Link
+            href={{
+              pathname: 'update',
+              query: {
+                id: product.id,
+              },
+            }}
+          >
+            Edit
+          </Link>
+        </div>
+        <AddToCart id={product.id} />
         <DeleteProduct id={product.id}>Delete</DeleteProduct>
       </div>
     </div>

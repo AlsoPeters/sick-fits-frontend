@@ -27,7 +27,7 @@ export default function DeleteProduct({ id, children }) {
   return (
     <button
       disabled={loading}
-      className='ml-4'
+      className='px-2 py-1 font-bold border-2 rounded-md bg-tokyo-term-black border-tokyo-term-magenta'
       type='button'
       onClick={() => {
         if (confirm('Are you sure you want to delete this item?')) {
