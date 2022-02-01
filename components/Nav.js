@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useCart } from '../lib/cartState';
+import CartCount from './CartCount';
 import SignOut from './SignOut';
 import { useUser } from './User';
 
@@ -31,9 +32,17 @@ export default function Nav() {
             </p>
           </Link>
           <SignOut />
-          <button type='button' onClick={openCart}>
-            My Cart
-          </button>
+          <div className='flex items-center'>
+            <button className='flex' type='button' onClick={openCart}>
+              My Cart
+              <CartCount
+                count={user.cart.reduce(
+                  (tally, cartItem) => tally + cartItem.quantity,
+                  0
+                )}
+              />
+            </button>
+          </div>
         </>
       )}
       {!user && (
