@@ -2,6 +2,7 @@ import { useUser } from './User';
 import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../lib/cartState';
+import RemoveFromCart from './RemoveFromCart';
 
 function CartItem({ cartItem }) {
   const product = cartItem.product;
@@ -21,6 +22,9 @@ function CartItem({ cartItem }) {
             {cartItem.quantity} &times; {formatMoney(product.price)} each
           </em>
         </p>
+      </div>
+      <div className='col-start-3'>
+        <RemoveFromCart id={cartItem.id} />
       </div>
     </li>
   );
