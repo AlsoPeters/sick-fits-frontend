@@ -1,20 +1,20 @@
 import 'tailwindcss/tailwind.css';
 import NProgress from 'nprogress';
-import '../components/styles/nprogress.css';
-import '../main.css';
 import Router from 'next/router';
 import { ApolloProvider } from '@apollo/client';
+
+import Page from '../components/Page';
+import { CartStateProvider } from '../lib/cartState';
+import '../components/styles/nprogress.css';
+import '../main.css';
 import withData from '../lib/withData';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
-
-import Page from '../components/Page';
-import { CartStateProvider } from '../lib/cartState';
-
 function MyApp({ Component, pageProps, apollo }) {
   return (
+    // <div className='text-tokyo-term-white'>suckit</div>
     <ApolloProvider client={apollo}>
       <CartStateProvider>
         <Page>
