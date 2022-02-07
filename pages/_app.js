@@ -15,6 +15,7 @@ Router.events.on('routeChangeError', () => NProgress.done());
 function MyApp({ Component, pageProps, apollo }) {
   return (
     // <div className='text-tokyo-term-white'>suckit</div>
+
     <ApolloProvider client={apollo}>
       <CartStateProvider>
         <Page>

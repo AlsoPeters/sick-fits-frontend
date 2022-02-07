@@ -3,7 +3,7 @@ import { useUser } from './User';
 import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import RemoveFromCart from './RemoveFromCart';
-import Checkout from './Checkout';
+import { Checkout } from './Checkout';
 
 function CartItem({ cartItem }) {
   const product = cartItem.product;

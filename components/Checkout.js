@@ -1,25 +1,68 @@
 import { loadStripe } from '@stripe/stripe-js';
-import { CardElement, Elements } from '@stripe/react-stripe-js';
+import {
+  CardElement,
+  Elements,
+  useElements,
+  useStripe,
+} from '@stripe/react-stripe-js';
+import { useState } from 'react';
+import nProgress from 'nprogress';
 
 const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
-export default function Checkout() {
-  function handleSubmit(e) {
+function CheckoutForm() {
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
+  const stripe = useStripe();
+  const elements = useElements();
+
+  async function handleSubmit(e) {
+    // 1. Stop the form from submitting and turn the loader on
     e.preventDefault();
+    setLoading(true);
     console.log('We gotta do some work..');
+    // 2. Start the page transition
+    nProgress.start();
+    // 3. Create the payment method via stripe (Token comes back here if successful)
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: 'card',
+      card: elements.getElement(CardElement),
+    });
+    console.log(paymentMethod);
+    // 4. Handle any errors from stripe
+    if (error) {
+      setError(error);
+    }
+    // 5. Send the token from step 3 to our keystone server, via a custom mutation
+    // 6. Change the page to view the order
+    // 7. Close the cart
+    // 8. Turn the loader off
+    setLoading(false);
+    nProgress.done();
   }
 
   return (
+    <form
+      onSubmit={handleSubmit}
+      className='w-auto p-4 mx-2 my-1 border-2 border-tokyo-term-magenta'
+    >
+      {error && <p className='text-xl text-tokyo-term-red'>{error.message}</p>}
+
+      <p>hello</p>
+      <CardElement />
+      <button className='w-full px-2 py-1 text-base font-bold border-2 bg-tokyo-night_BLK border-tokyo-term-magenta'>
+        Check Out Now
+      </button>
+    </form>
+  );
+}
+
+function Checkout() {
+  return (
     <Elements stripe={stripeLib}>
-      <form
-        onSubmit={handleSubmit}
-        className='w-auto p-4 mx-2 my-1 border-2 border-tokyo-term-magenta'
-      >
-        <CardElement />
-        <button className='w-full px-2 py-1 text-base font-bold border-2 bg-tokyo-night_BLK border-tokyo-term-magenta'>
-          Check Out Now
-        </button>
-      </form>
+      <CheckoutForm />
     </Elements>
   );
 }
+
+export { Checkout };
