@@ -3,6 +3,7 @@ import { useUser } from './User';
 import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import RemoveFromCart from './RemoveFromCart';
+import { Checkout } from './Checkout';
 
 function CartItem({ cartItem }) {
   const product = cartItem.product;
@@ -50,8 +51,9 @@ export default function Cart() {
           <CartItem key={cartItem.id} cartItem={cartItem} />
         ))}
       </ul>
-      <footer className='px-2 mx-2 text-3xl font-bold text-tokyo-term-green bg-tokyo-term-black w-max'>
+      <footer className='flex flex-col w-full px-2 mx-2 text-3xl font-bold text-tokyo-term-green bg-tokyo-term-black'>
         {formatMoney(calcTotalPrice(me.cart))}
+        <Checkout />
       </footer>
       {/* // TODO: Make slide in transition */}
     </div>
