@@ -1,7 +1,7 @@
+import { ApolloProvider } from '@apollo/client';
 import 'tailwindcss/tailwind.css';
 import NProgress from 'nprogress';
 import Router from 'next/router';
-import { ApolloProvider } from '@apollo/client';
 
 import Page from '../components/Page';
 import { CartStateProvider } from '../lib/cartState';
