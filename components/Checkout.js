@@ -62,6 +62,7 @@ function CheckoutForm() {
     console.log(`Finished with the order.`);
     console.log(order);
     // 6. Change the page to view the order
+
     // 7. Close the cart
     // 8. Turn the loader off
     setLoading(false);
