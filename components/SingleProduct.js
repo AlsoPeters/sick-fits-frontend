@@ -31,7 +31,7 @@ export default function SingleProduct({ id }) {
   const { Product } = data;
 
   return (
-    <div>
+    <div data-testid='singleProduct'>
       <Head>
         <title>Sick Fits | {Product.name}</title>
       </Head>
@@ -44,3 +44,5 @@ export default function SingleProduct({ id }) {
     </div>
   );
 }
+
+export { SINGLE_ITEM_QUERY };
