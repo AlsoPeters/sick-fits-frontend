@@ -18,6 +18,5 @@ describe('<CartCount/>', () => {
     rerender(<CartCount count={12} />);
     debug();
     expect(container.textContent).toBe('12');
-    expect(container);
   });
 });
