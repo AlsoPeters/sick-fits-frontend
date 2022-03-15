@@ -1,8 +1,8 @@
-import useForm from '../lib/useForm';
-import gql from 'graphql-tag';
-import { useMutation } from '@apollo/client';
-import { CURRENT_USER_QUERY } from './User';
-import Error from './ErrorMessage';
+import useForm from "../lib/useForm";
+import gql from "graphql-tag";
+import { useMutation } from "@apollo/client";
+import { CURRENT_USER_QUERY } from "./User";
+import Error from "./ErrorMessage";
 
 const SIGNIN_MUTATION = gql`
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
@@ -24,8 +24,8 @@ const SIGNIN_MUTATION = gql`
 
 export default function SignIn() {
   const { inputs, handleChange, resetForm } = useForm({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const [signin, { data, loading }] = useMutation(SIGNIN_MUTATION, {
@@ -44,43 +44,43 @@ export default function SignIn() {
 
   const error =
     data?.authenticateUserWithPassword.__typename ===
-    'UserAuthenticationWithPasswordFailure'
+    "UserAuthenticationWithPasswordFailure"
       ? data?.authenticateUserWithPassword
       : undefined;
   return (
-    <form className='flex' method='POST' onSubmit={handleSubmit}>
-      <fieldset className='px-2 border-2 rounded-sm border-tokyo-term-magenta'>
-        <h2 className='text-xl font-bold text-tokyo-term-white '>
+    <form className="flex" method="POST" onSubmit={handleSubmit}>
+      <fieldset className="px-2 border-2 rounded-sm border-tokyo-term-magenta">
+        <h2 className="text-xl font-bold text-tokyo-term-white ">
           Sign In to Your Account
         </h2>
         <Error error={error} />
-        <label className='flex flex-col my-2 font-bold' htmlFor='email'>
+        <label className="flex flex-col my-2 font-bold" htmlFor="email">
           Email
           <input
-            className='px-2 border rounded-sm text-tokyo-term-white bg-tokyo-comment_PURP border-tokyo-term-magenta'
-            type='email'
-            name='email'
-            placeholder='Your Email Adress'
-            autoComplete='email'
+            className="px-2 border rounded-sm text-tokyo-term-white bg-tokyo-comment_PURP border-tokyo-term-magenta"
+            type="email"
+            name="email"
+            placeholder="Your Email Adress"
+            autoComplete="email"
             value={inputs.value}
             onChange={handleChange}
           />
         </label>
-        <label className='flex flex-col my-2 font-bold' htmlFor='password'>
+        <label className="flex flex-col my-2 font-bold" htmlFor="password">
           Password
           <input
-            className='px-2 border rounded-sm text-tokyo-term-white bg-tokyo-comment_PURP border-tokyo-term-magenta'
-            type='password'
-            name='password'
-            placeholder='Password'
-            autoComplete='password'
+            className="px-2 border rounded-sm text-tokyo-term-white bg-tokyo-comment_PURP border-tokyo-term-magenta"
+            type="password"
+            name="password"
+            placeholder="Password"
+            autoComplete="password"
             value={inputs.password}
             onChange={handleChange}
           />
         </label>
         <button
-          className='px-2 my-2 font-bold rounded-sm bg-tokyo-term-magenta text-tokyo-night_BLK'
-          type='submit'
+          className="px-2 my-2 font-bold rounded-sm bg-tokyo-term-magenta text-tokyo-night_BLK"
+          type="submit"
         >
           Sign In
         </button>

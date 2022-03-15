@@ -1,6 +1,6 @@
-import { useMutation } from '@apollo/client';
-import gql from 'graphql-tag';
-import { CURRENT_USER_QUERY, useUser } from './User';
+import { useMutation } from "@apollo/client";
+import gql from "graphql-tag";
+import { CURRENT_USER_QUERY, useUser } from "./User";
 
 export const SIGN_OUT_USER_MUTATION = gql`
   mutation {
@@ -15,9 +15,9 @@ export default function SignOut() {
 
   return (
     <button
-      type='button'
+      type="button"
       onClick={signout}
-      className='px-6 py-4 mx-2 border-4 rounded-md border-tokyo-term-magenta hover:cursor-pointer'
+      className="px-6 py-4 mx-2 border-4 rounded-md border-tokyo-term-magenta hover:cursor-pointer"
     >
       Sign Out
     </button>

@@ -1,17 +1,17 @@
-import { loadStripe } from '@stripe/stripe-js';
+import { loadStripe } from "@stripe/stripe-js";
 import {
   CardElement,
   Elements,
   useElements,
   useStripe,
-} from '@stripe/react-stripe-js';
-import { useState } from 'react';
-import nProgress from 'nprogress';
-import gql from 'graphql-tag';
-import { useMutation } from '@apollo/client';
-import { useRouter } from 'next/router';
-import { useCart } from '../lib/cartState';
-import { CURRENT_USER_QUERY } from './User';
+} from "@stripe/react-stripe-js";
+import { useState } from "react";
+import nProgress from "nprogress";
+import gql from "graphql-tag";
+import { useMutation } from "@apollo/client";
+import { useRouter } from "next/router";
+import { useCart } from "../lib/cartState";
+import { CURRENT_USER_QUERY } from "./User";
 
 const CREATE_ORDER_MUTATION = gql`
   mutation CREATE_ORDER_MUTATION($token: String!) {
@@ -51,7 +51,7 @@ function CheckoutForm() {
     nProgress.start();
     // 3. Create the payment method via stripe (Token comes back here if successful)
     const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
+      type: "card",
       card: elements.getElement(CardElement),
     });
     console.log(paymentMethod);
@@ -84,16 +84,16 @@ function CheckoutForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className='w-auto p-4 mx-2 my-1 border-2 border-tokyo-term-magenta'
+      className="w-auto p-4 mx-2 my-1 border-2 border-tokyo-term-magenta"
     >
-      {error && <p className='text-xl text-tokyo-term-red'>{error.message}</p>}
+      {error && <p className="text-xl text-tokyo-term-red">{error.message}</p>}
       {graphQLError && (
-        <p className='text-xl text-tokyo-term-red'>{graphQLError.message}</p>
+        <p className="text-xl text-tokyo-term-red">{graphQLError.message}</p>
       )}
 
       <p>hello</p>
       <CardElement />
-      <button className='w-full px-2 py-1 text-base font-bold border-2 bg-tokyo-night_BLK border-tokyo-term-magenta'>
+      <button className="w-full px-2 py-1 text-base font-bold border-2 bg-tokyo-night_BLK border-tokyo-term-magenta">
         Check Out Now
       </button>
     </form>

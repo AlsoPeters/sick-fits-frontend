@@ -1,5 +1,5 @@
-import RequestReset from '../components/RequestReset';
-import Reset from '../components/reset';
+import RequestReset from "../components/RequestReset";
+import Reset from "../components/reset";
 
 export default function ResetPage({ query }) {
   if (!query?.token) {

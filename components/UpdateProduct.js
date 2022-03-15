@@ -1,7 +1,7 @@
-import { useMutation, useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
-import useForm from '../lib/useForm';
-import DisplayError from './ErrorMessage';
+import { useMutation, useQuery } from "@apollo/client";
+import gql from "graphql-tag";
+import useForm from "../lib/useForm";
+import DisplayError from "./ErrorMessage";
 
 const SINGLE_PRODUCT_QUERY = gql`
   query SINGLE_PRODUCT_QUERY($id: ID!) {
@@ -73,34 +73,34 @@ export default function UpdateProduct({ id }) {
       >
         <DisplayError error={error} />
         <fieldset disabled={loading}>
-          <label htmlFor='name'>
+          <label htmlFor="name">
             Name
             <input
-              type='text'
-              id='name'
-              name='name'
-              placeholder='Name'
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Name"
               value={inputs.name}
               onChange={handleChange}
             />
           </label>
-          <label htmlFor='price'>
+          <label htmlFor="price">
             price
             <input
-              type='number'
-              id='name'
-              name='price'
-              placeholder='Price'
+              type="number"
+              id="name"
+              name="price"
+              placeholder="Price"
               value={inputs.price}
               onChange={handleChange}
             />
           </label>
-          <label htmlFor='description'>
+          <label htmlFor="description">
             Description
             <textarea
-              id='description'
-              name='description'
-              placeholder='Description'
+              id="description"
+              name="description"
+              placeholder="Description"
               value={inputs.description}
               onChange={handleChange}
             />
@@ -108,8 +108,8 @@ export default function UpdateProduct({ id }) {
 
           <button
             // TODO: add this button style as a default
-            className='px-2 py-1 m-2 border-2 rounded-md bg-tokyo-term-black border-tokyo-term-magenta'
-            type='submit'
+            className="px-2 py-1 m-2 border-2 rounded-md bg-tokyo-term-black border-tokyo-term-magenta"
+            type="submit"
           >
             Update Product
           </button>
