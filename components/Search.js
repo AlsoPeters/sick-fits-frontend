@@ -1,8 +1,8 @@
-import { useLazyQuery } from "@apollo/client";
-import { resetIdCounter, useCombobox } from "downshift";
-import gql from "graphql-tag";
-import debounce from "lodash.debounce";
-import { useRouter } from "next/dist/client/router";
+import { useLazyQuery } from '@apollo/client';
+import { resetIdCounter, useCombobox } from 'downshift';
+import gql from 'graphql-tag';
+import debounce from 'lodash.debounce';
+import { useRouter } from 'next/dist/client/router';
 
 const SEARCH_PRODUCTS_QUERY = gql`
   query SEARCH_PRODUCTS_QUERY($searchTerm: String!) {
@@ -30,7 +30,7 @@ export default function Search() {
   const [findItems, { loading, data, error }] = useLazyQuery(
     SEARCH_PRODUCTS_QUERY,
     {
-      fetchPolicy: "no-cache",
+      fetchPolicy: 'no-cache',
     }
   );
 
@@ -51,7 +51,7 @@ export default function Search() {
   } = useCombobox({
     items: items,
     onInputValueChange() {
-      console.log("Input changed!");
+      console.log('Input changed!');
       findItemsButChill({
         variables: {
           searchTerm: inputValue,
@@ -63,7 +63,7 @@ export default function Search() {
         pathname: `/product/${selectedItem.id}`,
       });
     },
-    itemToString: (item) => item?.name || "",
+    itemToString: (item) => item?.name || '',
   });
 
   return (
@@ -71,10 +71,10 @@ export default function Search() {
       <div {...getComboboxProps()}>
         <input
           {...getInputProps({
-            type: "search",
-            placeholder: "Search for an Item",
-            id: "search",
-            className: loading ? "loading" : "",
+            type: 'search',
+            placeholder: 'Search for an Item',
+            id: 'search',
+            className: loading ? 'loading' : '',
           })}
         />
       </div>

@@ -1,7 +1,7 @@
-import Link from "next/link";
-import Cart from "./Cart";
-import Nav from "./Nav";
-import Search from "./Search";
+import Link from 'next/link';
+import Cart from './Cart';
+import Nav from './Nav';
+import Search from './Search';
 
 export default function Header() {
   return (

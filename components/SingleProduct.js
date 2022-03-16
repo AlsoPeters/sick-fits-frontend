@@ -1,7 +1,7 @@
-import { useQuery } from "@apollo/client";
-import gql from "graphql-tag";
-import DisplayError from "./ErrorMessage";
-import Head from "next/head";
+import { useQuery } from '@apollo/client';
+import gql from 'graphql-tag';
+import DisplayError from './ErrorMessage';
+import Head from 'next/head';
 
 const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERRY($id: ID!) {

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 // const ErrorStyles = styled.div`
 //   padding: 2rem;
@@ -31,7 +31,7 @@ const DisplayError = ({ error }) => {
       >
         <p className="font-bold" data-test="graphql-error">
           <strong className="mr-2 text-2xl">Shoot!</strong>
-          {error.message.replace("GraphQL error: ", "")}
+          {error.message.replace('GraphQL error: ', '')}
         </p>
       </div>
     ));
@@ -40,7 +40,7 @@ const DisplayError = ({ error }) => {
     <div className="p-2 my-2 border-l-4 border-tokyo-term-red bg-tokyo-term-black">
       <p data-testid="graphql-error">
         <strong className=" text-tokyo-term-red">Shoot! </strong>
-        {error.message.replace("GraphQL error: ", "")}
+        {error.message.replace('GraphQL error: ', '')}
       </p>
     </div>
   );

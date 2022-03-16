@@ -1,7 +1,7 @@
-import Link from "next/link";
-import formatMoney from "../lib/formatMoney";
-import AddToCart from "./AddToCart";
-import DeleteProduct from "./DeleteProduct";
+import Link from 'next/link';
+import formatMoney from '../lib/formatMoney';
+import AddToCart from './AddToCart';
+import DeleteProduct from './DeleteProduct';
 
 export default function Product({ product }) {
   return (
@@ -22,7 +22,7 @@ export default function Product({ product }) {
         <div className="px-2 py-1 font-bold border-2 rounded-md bg-tokyo-term-black border-tokyo-term-magenta">
           <Link
             href={{
-              pathname: "update",
+              pathname: 'update',
               query: {
                 id: product.id,
               },

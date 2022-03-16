@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { useCart } from "../lib/cartState";
-import CartCount from "./CartCount";
-import SignOut from "./SignOut";
-import { useUser } from "./User";
+import Link from 'next/link';
+import { useCart } from '../lib/cartState';
+import CartCount from './CartCount';
+import SignOut from './SignOut';
+import { useUser } from './User';
 
 export default function Nav() {
   const user = useUser();

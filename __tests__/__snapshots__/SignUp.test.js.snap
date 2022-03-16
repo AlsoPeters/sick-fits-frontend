@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignUp/> Renders and matches snapshot 1`] = `
+<div>
+  <form
+    class="flex"
+    method="POST"
+  >
+    <fieldset
+      class="px-2 border-2 rounded-sm border-tokyo-term-magenta"
+    >
+      <h2
+        class="text-xl font-bold text-tokyo-term-white "
+      >
+        Sign Up For an Account
+      </h2>
+      <label
+        class="flex flex-col my-2 font-bold"
+        for="email"
+      >
+        Your Name
+        <input
+          autocomplete="name"
+          class="px-2 border rounded-sm text-tokyo-term-white bg-tokyo-comment_PURP border-tokyo-term-magenta"
+          name="name"
+          placeholder="Dohn Joe"
+          type="text"
+          value=""
+        />
+      </label>
+      <label
+        class="flex flex-col my-2 font-bold"
+        for="email"
+      >
+        Email
+        <input
+          autocomplete="email"
+          class="px-2 border rounded-sm text-tokyo-term-white bg-tokyo-comment_PURP border-tokyo-term-magenta"
+          name="email"
+          placeholder="Your Email Adress"
+          type="email"
+          value=""
+        />
+      </label>
+      <label
+        class="flex flex-col my-2 font-bold"
+        for="password"
+      >
+        Password
+        <input
+          autocomplete="password"
+          class="px-2 border rounded-sm text-tokyo-term-white bg-tokyo-comment_PURP border-tokyo-term-magenta"
+          name="password"
+          placeholder="Password"
+          type="password"
+          value=""
+        />
+      </label>
+      <button
+        class="px-2 my-2 font-bold rounded-sm bg-tokyo-term-magenta text-tokyo-night_BLK"
+        type="submit"
+      >
+        Sign Up
+      </button>
+    </fieldset>
+  </form>
+</div>
+`;

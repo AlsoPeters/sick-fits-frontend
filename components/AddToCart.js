@@ -1,6 +1,6 @@
-import { useMutation } from "@apollo/client";
-import gql from "graphql-tag";
-import { CURRENT_USER_QUERY } from "./User";
+import { useMutation } from '@apollo/client';
+import gql from 'graphql-tag';
+import { CURRENT_USER_QUERY } from './User';
 
 const ADD_TO_CART_MUTATION = gql`
   mutation ADD_TO_CART_MUTATION($id: ID!) {
@@ -22,7 +22,7 @@ export default function AddToCart({ id }) {
       className="px-2 py-1 font-bold border-2 rounded-md bg-tokyo-term-black border-tokyo-term-magenta"
       type="button"
     >
-      Add{loading && "ing"} To Cart
+      Add{loading && 'ing'} To Cart
     </button>
   );
 }

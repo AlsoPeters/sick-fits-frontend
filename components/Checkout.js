@@ -1,17 +1,17 @@
-import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from '@stripe/stripe-js';
 import {
   CardElement,
   Elements,
   useElements,
   useStripe,
-} from "@stripe/react-stripe-js";
-import { useState } from "react";
-import nProgress from "nprogress";
-import gql from "graphql-tag";
-import { useMutation } from "@apollo/client";
-import { useRouter } from "next/router";
-import { useCart } from "../lib/cartState";
-import { CURRENT_USER_QUERY } from "./User";
+} from '@stripe/react-stripe-js';
+import { useState } from 'react';
+import nProgress from 'nprogress';
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/client';
+import { useRouter } from 'next/router';
+import { useCart } from '../lib/cartState';
+import { CURRENT_USER_QUERY } from './User';
 
 const CREATE_ORDER_MUTATION = gql`
   mutation CREATE_ORDER_MUTATION($token: String!) {
@@ -51,7 +51,7 @@ function CheckoutForm() {
     nProgress.start();
     // 3. Create the payment method via stripe (Token comes back here if successful)
     const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
+      type: 'card',
       card: elements.getElement(CardElement),
     });
     console.log(paymentMethod);

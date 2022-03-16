@@ -1,9 +1,9 @@
-import { useQuery } from "@apollo/client";
-import gql from "graphql-tag";
-import Head from "next/head";
-import ErrorMessage from "../components/ErrorMessage";
-import formatMoney from "../lib/formatMoney";
-import Link from "next/link";
+import { useQuery } from '@apollo/client';
+import gql from 'graphql-tag';
+import Head from 'next/head';
+import ErrorMessage from '../components/ErrorMessage';
+import formatMoney from '../lib/formatMoney';
+import Link from 'next/link';
 
 const USER_ORDERS_QUERY = gql`
   query USER_ORDERS_QUERY {
@@ -55,12 +55,12 @@ export default function OrdersPage() {
               <a className="grid grid-rows-2">
                 <div className="flex row-span-1 text-center">
                   <p className="p-2 m-2 w-28 bg-tokyo-term-black">
-                    {countItemsInAnOrder(order)}{" "}
-                    {countItemsInAnOrder(order) === 1 ? "Item" : "Items"}
+                    {countItemsInAnOrder(order)}{' '}
+                    {countItemsInAnOrder(order) === 1 ? 'Item' : 'Items'}
                   </p>
                   <p className="p-2 m-2 w-28 bg-tokyo-term-black">
-                    {order.items.length}{" "}
-                    {order.items.length === 1 ? "Product" : "Products"}
+                    {order.items.length}{' '}
+                    {order.items.length === 1 ? 'Product' : 'Products'}
                   </p>
                   <p className="p-2 m-2 w-28 bg-tokyo-term-black">
                     {formatMoney(order.total)}

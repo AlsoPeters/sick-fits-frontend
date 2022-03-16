@@ -1,8 +1,8 @@
-import useForm from "../lib/useForm";
-import gql from "graphql-tag";
-import { useMutation } from "@apollo/client";
-import { CURRENT_USER_QUERY } from "./User";
-import Error from "./ErrorMessage";
+import useForm from '../lib/useForm';
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/client';
+import { CURRENT_USER_QUERY } from './User';
+import Error from './ErrorMessage';
 
 const SIGNIN_MUTATION = gql`
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
@@ -24,8 +24,8 @@ const SIGNIN_MUTATION = gql`
 
 export default function SignIn() {
   const { inputs, handleChange, resetForm } = useForm({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const [signin, { data, loading }] = useMutation(SIGNIN_MUTATION, {
@@ -44,7 +44,7 @@ export default function SignIn() {
 
   const error =
     data?.authenticateUserWithPassword.__typename ===
-    "UserAuthenticationWithPasswordFailure"
+    'UserAuthenticationWithPasswordFailure'
       ? data?.authenticateUserWithPassword
       : undefined;
   return (
