@@ -73,3 +73,5 @@ export default function RequestReset() {
     </form>
   );
 }
+
+export { REQUEST_RESET_MUTATION };
