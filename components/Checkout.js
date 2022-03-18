@@ -84,16 +84,15 @@ function CheckoutForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-auto p-4 mx-2 my-1 border-2 border-tokyo-term-magenta"
+      className='p-4 my-1 mx-2 w-auto border-2 border-tokyo-term-magenta'
     >
-      {error && <p className="text-xl text-tokyo-term-red">{error.message}</p>}
+      {error && <p className='text-xl text-tokyo-term-red'>{error.message}</p>}
       {graphQLError && (
-        <p className="text-xl text-tokyo-term-red">{graphQLError.message}</p>
+        <p className='text-xl text-tokyo-term-red'>{graphQLError.message}</p>
       )}
 
-      <p>hello</p>
       <CardElement />
-      <button className="w-full px-2 py-1 text-base font-bold border-2 bg-tokyo-night_BLK border-tokyo-term-magenta">
+      <button className='py-1 w-full text-base font-bold border-2 bg-tokyo-night_BLK border-tokyo-term-magenta'>
         Check Out Now
       </button>
     </form>
