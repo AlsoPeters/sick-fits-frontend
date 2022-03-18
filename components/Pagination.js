@@ -22,7 +22,7 @@ export default function Pagination({ page }) {
   const pageCount = Math.ceil(count / perPage);
 
   return (
-    <>
+    <div data-testid="pagination">
       <Head>
         <title>
           Sick Fits - Page {page} of {pageCount}
@@ -32,12 +32,12 @@ export default function Pagination({ page }) {
         <a aria-disabled={page <= 1}>Prev</a>
       </Link>
       <p>
-        Page {page} of {pageCount}
+        Page {page} of <span data-testid="pageCount">{pageCount}</span>
       </p>
       <p>{count} Items Total</p>
       <Link href={`/products/${page + 1}`}>
         <a aria-disabled={page >= pageCount}>Next</a>
       </Link>
-    </>
+    </div>
   );
 }

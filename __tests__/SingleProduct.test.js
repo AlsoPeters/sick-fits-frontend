@@ -27,7 +27,7 @@ describe('<Single Product/>', () => {
     // We need to make some fake data
     const { container, debug } = render(
       <MockedProvider mocks={mocks}>
-        <SingleProduct id='123' />
+        <SingleProduct id="123" />
       </MockedProvider>
     );
     // Wait for the test ID to show up
@@ -51,7 +51,7 @@ describe('<Single Product/>', () => {
     ];
     const { container, debug } = render(
       <MockedProvider mocks={errorMock}>
-        <SingleProduct id='123' />
+        <SingleProduct id="123" />
       </MockedProvider>
     );
     await screen.findByTestId('graphql-error');

@@ -89,7 +89,7 @@ export default function Search() {
               <img
                 src={item.photo.image.publicUrlTransformed}
                 alt={item.name}
-                width='50'
+                width="50"
               />
               {item.name}
             </div>

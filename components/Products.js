@@ -31,7 +31,7 @@ export default function Products({ page }) {
   if (error) return <p>Error: {error.message}</p>;
   return (
     <div>
-      <div className='grid grid-cols-2 gap-14'>
+      <div className="grid grid-cols-2 gap-14">
         {data.allProducts.map((product) => (
           <Product key={product.id} product={product} />
         ))}

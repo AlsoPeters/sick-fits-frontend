@@ -29,9 +29,9 @@ export default function RemoveFromCart({ id }) {
     <button
       onClick={removeFromCart}
       disabled={loading}
-      className='text-2xl hover:text-tokyo-term-red'
-      type='button'
-      title='Remove This Item From Cart'
+      className="text-2xl hover:text-tokyo-term-red"
+      type="button"
+      title="Remove This Item From Cart"
     >
       &times;
     </button>

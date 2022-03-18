@@ -26,20 +26,20 @@ const DisplayError = ({ error }) => {
   ) {
     return error.networkError.result.errors.map((error, i) => (
       <div
-        className='p-4 m-4 border-2 rounded-md bg-tokyo-term-black text-tokyo-term-red border-tokyo-term-red'
+        className="p-4 m-4 border-2 rounded-md bg-tokyo-term-black text-tokyo-term-red border-tokyo-term-red"
         key={i}
       >
-        <p className='font-bold' data-test='graphql-error'>
-          <strong className='mr-2 text-2xl'>Shoot!</strong>
+        <p className="font-bold" data-test="graphql-error">
+          <strong className="mr-2 text-2xl">Shoot!</strong>
           {error.message.replace('GraphQL error: ', '')}
         </p>
       </div>
     ));
   }
   return (
-    <div className='p-2 my-2 border-l-4 border-tokyo-term-red bg-tokyo-term-black'>
-      <p data-testid='graphql-error'>
-        <strong className=' text-tokyo-term-red'>Shoot! </strong>
+    <div className="p-2 my-2 border-l-4 border-tokyo-term-red bg-tokyo-term-black">
+      <p data-testid="graphql-error">
+        <strong className=" text-tokyo-term-red">Shoot! </strong>
         {error.message.replace('GraphQL error: ', '')}
       </p>
     </div>
