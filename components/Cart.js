@@ -36,16 +36,18 @@ export default function Cart() {
   const { cartOpen, closeCart } = useCart();
   if (!me) return null;
   return (
-    <div className='fixed right-0 z-50 mx-4 max-w-lg rounded-md border-2 border-tokyo-term-magenta bg-tokyo-storm_BLK'>
-      <header className='py-1 px-2 m-2 w-max text-2xl font-bold rounded-sm border-2 bg-tokyo-term-black border-tokyo-term-magenta'>
-        {me.name}'s Cart
-      </header>
-      <button
-        className='py-1 px-2 text-xl rounded-md border-2 border-tokyo-term-magenta bg-tokyo-term-black'
-        onClick={closeCart}
-      >
-        &times;
-      </button>
+    <div className='fixed right-0 z-50 max-w-lg rounded-md border-2 mx-6x-4 border-tokyo-term-magenta bg-tokyo-storm_BLK'>
+      <div className='flex justify-center'>
+        <header className='bottom-0 left-0 px-2 m-2 w-max text-3xl font-bold rounded-sm border-2 bg-tokyo-term-black border-tokyo-term-magenta'>
+          {me.name}'s Cart
+        </header>
+        <button
+          className='py-1 px-2 mt-2 text-xl rounded-md border-2 h-max border-tokyo-term-magenta bg-tokyo-term-black'
+          onClick={closeCart}
+        >
+          &times;
+        </button>
+      </div>
       <ul>
         {me.cart.map((cartItem) => (
           <CartItem key={cartItem.id} cartItem={cartItem} />
