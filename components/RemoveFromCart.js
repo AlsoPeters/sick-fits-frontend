@@ -9,20 +9,17 @@ const REMOVE_FROM_CART_MUTATION = gql`
   }
 `;
 
-function update(cache, payload) {
-  cache.evict(cache.identify(payload.data.deleteCartItem));
-}
 
 export default function RemoveFromCart({ id }) {
   const [removeFromCart, { loading }] = useMutation(REMOVE_FROM_CART_MUTATION, {
     variables: { id },
     update,
-    optimisticResponse: {
-      deleteCartItem: {
-        __typename: 'CartItem',
-        id,
-      },
-    },
+    // optimisticResponse: {
+    //   deleteCartItem: {
+    //     __typename: 'CartItem',
+    //     id,
+    //   },
+    // },
   });
 
   return (
@@ -37,3 +34,12 @@ export default function RemoveFromCart({ id }) {
     </button>
   );
 }
+
+function update(cache, payload) {
+
+  // console.log("cache", cache, "payload", payload)
+  cache.evict(cache.identify(payload.data.deleteCartItem));
+  
+
+}
+

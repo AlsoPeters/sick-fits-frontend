@@ -10,7 +10,7 @@ export default function Header() {
         <Link href='/'>
           <h1 className='m-4 logo-primary hover:cursor-pointer'>Sick Fits</h1>
         </Link>
-        <div className='grid place-content-end'>
+        <div className='grid  place-content-end'>
           <Nav />
         </div>
       </div>

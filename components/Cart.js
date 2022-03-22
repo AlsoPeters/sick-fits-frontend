@@ -36,7 +36,7 @@ export default function Cart() {
   const { cartOpen, closeCart } = useCart();
   if (!me) return null;
   return (
-    <div className='fixed right-0 z-50 max-w-lg rounded-md border-2 mx-6x-4 border-tokyo-term-magenta bg-tokyo-storm_BLK'>
+    <div className={cartOpen === false? 'fixed -right-full z-50 max-w-lg rounded-md border-2 mx-6x-4 border-tokyo-term-magenta bg-tokyo-storm_BLK': 'fixed right-0 z-50 max-w-lg rounded-md border-2 mx-6x-4 border-tokyo-term-magenta bg-tokyo-storm_BLK'}>
       <div className='flex justify-center'>
         <header className='bottom-0 left-0 px-2 m-2 w-max text-3xl font-bold rounded-sm border-2 bg-tokyo-term-black border-tokyo-term-magenta'>
           {me.name}'s Cart
@@ -53,7 +53,7 @@ export default function Cart() {
           <CartItem key={cartItem.id} cartItem={cartItem} />
         ))}
       </ul>
-      <footer className='flex flex-col p-2 px-2 w-full text-3xl font-bold text-tokyo-term-green bg-tokyo-term-black'>
+      <footer className='flex  flex-col p-2 px-2 w-full text-3xl font-bold text-tokyo-term-green bg-tokyo-term-black'>
         <div className='ml-2'>{formatMoney(calcTotalPrice(me.cart))}</div>
         <Checkout />
       </footer>

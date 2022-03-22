@@ -98,7 +98,6 @@ function CheckoutForm() {
     </form>
   );
 }
-
 function Checkout() {
   return (
     <Elements stripe={stripeLib}>
@@ -106,5 +105,6 @@ function Checkout() {
     </Elements>
   );
 }
+
 
 export { Checkout };
