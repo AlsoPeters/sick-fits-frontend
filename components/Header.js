@@ -5,16 +5,16 @@ import Search from './Search';
 
 export default function Header() {
   return (
-    <header className="text-tokyo-term-blue bg-tokyo-night_BLK">
-      <div className="grid items-center grid-cols-2">
-        <Link href="/">
-          <h1 className="m-4 logo-primary hover:cursor-pointer">Sick Fits</h1>
+    <header className='bg-tokyo-night_BLK'>
+      <div className='grid grid-cols-2 items-center'>
+        <Link href='/'>
+          <h1 className='m-4 logo-primary hover:cursor-pointer'>Sick Fits</h1>
         </Link>
-        <div className="grid place-content-end">
+        <div className='grid  place-content-end'>
           <Nav />
         </div>
       </div>
-      <div className="sub-bar">
+      <div className='ml-4'>
         <Search />
       </div>
       <Cart />
