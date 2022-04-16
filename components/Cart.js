@@ -9,7 +9,7 @@ function CartItem({ cartItem }) {
   const product = cartItem.product
   if (!product) return null
   return (
-    <li className='grid grid-cols-2 py-1 px-2 my-4 border-b border-tokyo-term-magenta'>
+    <li className='  grid grid-cols-2 py-1 px-2 my-4 border-b border-tokyo-term-magenta'>
       <img
         className='col-span-1 mr-4 w-full'
         src={product.photo.image.publicUrlTransformed}
@@ -40,7 +40,7 @@ export default function Cart() {
       className={
         cartOpen === false
           ? 'fixed -right-full z-50 w-1/4 rounded-md border-2 mx-6x-4 border-tokyo-term-magenta bg-tokyo-storm_BLK'
-          : 'fixed right-4 z-50 w-96 rounded-md max-h-lg border-2 mx-6x-4 border-tokyo-term-magenta bg-tokyo-storm_BLK'
+          : 'fixed right-4 z-50 w-96 rounded-md border-2 max-h-lg  mx-6x-4 border-tokyo-term-magenta bg-tokyo-storm_BLK'
       }
     >
       <div className='flex justify-center'>
@@ -54,11 +54,11 @@ export default function Cart() {
           &times;
         </button>
       </div>
-        <ul className='mt-2 w-auto h-80 overflow-auto'>
-          {me.cart.map((cartItem) => (
-            <CartItem key={cartItem.id} cartItem={cartItem} />
-          ))}
-        </ul>
+      <ul className='mt-2 w-auto h-80 overflow-auto'>
+        {me.cart.map((cartItem) => (
+          <CartItem key={cartItem.id} cartItem={cartItem} />
+        ))}
+      </ul>
       <footer className='flex  flex-col p-2 px-2 w-full text-3xl font-bold text-tokyo-term-green bg-tokyo-term-black'>
         <div className='ml-2'>{formatMoney(calcTotalPrice(me.cart))}</div>
         <Checkout />
