@@ -9,8 +9,8 @@ const SEARCH_PRODUCTS_QUERY = gql`
     searchTerms: allProducts(
       where: {
         OR: [
-          { name_contains_i: $searchTerm }
-          { description_contains_i: $searchTerm }
+          { name: { contains: $searchTerm } }
+          { description: { contains: $searchTerm } }
         ]
       }
     ) {
@@ -24,6 +24,17 @@ const SEARCH_PRODUCTS_QUERY = gql`
     }
   }
 `;
+
+function ClientOnly({ children, ...delegated }) {
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+  if (!hasMounted) {
+    return null;
+  }
+  return <div {...delegated}>{children}</div>;
+}
 
 export default function Search() {
   const router = useRouter();
@@ -49,7 +60,7 @@ export default function Search() {
     getItemProps,
     highlightedIndex,
   } = useCombobox({
-    items: items,
+    items,
     onInputValueChange() {
       console.log('Input changed!');
       findItemsButChill({
@@ -69,21 +80,23 @@ export default function Search() {
   return (
     <div>
       <div {...getComboboxProps()}>
-        <input
-          {...getInputProps({
-            type: 'search',
-            placeholder: 'Search for an Item',
-            id: 'search',
-            className: loading ? 'loading' : '',
-          })}
-        />
+        <ClientOnly>
+          <input
+            {...getInputProps({
+              type: 'search',
+              placeholder: 'Search for an Item',
+              id: 'search',
+              className: loading ? 'loading' : null,
+            })}
+          />
+        </ClientOnly>
       </div>
       <div {...getMenuProps()}>
         {isOpen &&
           items.map((item, index) => (
             <div
+              {...getItemProps({ item, index })}
               key={item.id}
-              {...getItemProps({ item })}
               highlighted={index === highlightedIndex}
             >
               <img
